@@ -1,31 +1,17 @@
 import React, { Component } from "react";
+import MyInfor from "./MyInfor";
+import UserInfo from "./UserInfo";
 
 export class MyComponent extends Component {
-  state = {
-    name: "Thinh Tran",
-    learning: "Reactjs",
-    age: 20,
-  };
-  onClickHandle = () => {
-    console.log("Click me ! ");
-
-    this.setState({
-      name: "Thinh Dep trai",
-      learning: "Java Spring Boot",
-    });
-  };
-  onMouseOverHandle(event) {
-    // console.log(event.target);
-  }
   render() {
+    const myInfor = ["a", "b", "c", "d", "e"];
     return (
       <>
-        <div>MyComponent</div>
-        <div>
-          My name is {this.state.name} and I'm learning {this.state.learning}
-        </div>
-        <button onClick={this.onClickHandle}>click me </button>
-        <button onMouseOver={this.onMouseOverHandle}>Hover me</button>
+        <UserInfo />
+        <hr></hr>
+        <MyInfor name='Thinh Tran' age='21' />
+        <hr></hr>
+        <MyInfor name='Kid' age='20' myInfor={myInfor} />
       </>
     );
   }
