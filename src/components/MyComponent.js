@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import MyInfor from "./MyInfor";
-import UserInfo from "./UserInfo";
+import DisplayUserInfo from "./DisplayUserInfo";
+import AddUserInfo from "./AddUserInfo";
 
-export class MyComponent extends Component {
-  render() {
-    const listUsers = [
+class MyComponent extends Component {
+  state = {
+    listUsers: [
       {
         id: 1,
         name: "Thinh It",
@@ -20,12 +20,20 @@ export class MyComponent extends Component {
         name: "Chang trai co don hoc code",
         age: 90,
       },
-    ];
+    ],
+  };
+  handleAddUserInfo = (userObj) => {
+    console.log("check data >>>", userObj);
+    this.setState({
+      listUsers: [userObj, ...this.state.listUsers],
+    });
+  };
+  render() {
     return (
       <>
-        <UserInfo />
-        <hr></hr>
-        <MyInfor listUsers={listUsers} />
+        <AddUserInfo handleAddUserInfo={this.handleAddUserInfo} />
+        <hr />
+        <DisplayUserInfo listUsers={this.state.listUsers} />
       </>
     );
   }

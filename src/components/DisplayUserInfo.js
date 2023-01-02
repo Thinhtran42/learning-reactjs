@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class MyInfor extends Component {
+class DisplayUserInfo extends Component {
   state = {
     isShowListUser: true,
   };
@@ -9,7 +9,6 @@ class MyInfor extends Component {
   };
   render() {
     const { listUsers } = this.props;
-    console.log(listUsers);
     return (
       <>
         <div
@@ -25,7 +24,7 @@ class MyInfor extends Component {
           <div>
             {listUsers.map((user) => {
               return (
-                <div key={user.id} className={+user.age > 18 ? "red" : "green"}>
+                <div key={user.id} className={+user.age < 18 ? "red" : "green"}>
                   <h1>My name's {user.name} </h1>
                   <h1>My age's {user.age}</h1>
                   <hr />
@@ -39,4 +38,4 @@ class MyInfor extends Component {
   }
 }
 
-export default MyInfor;
+export default DisplayUserInfo;
