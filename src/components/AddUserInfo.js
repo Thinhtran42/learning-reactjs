@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export class AddUserInfo extends Component {
+class AddUserInfo extends Component {
   state = {
     name: "Thinh Tran",
     learning: "Reactjs",
