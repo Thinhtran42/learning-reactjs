@@ -1,51 +1,42 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class AddUserInfo extends Component {
-  state = {
-    name: "Thinh Tran",
-    learning: "Reactjs",
-    age: 20,
+const AddUserInfo = (props) => {
+  const [name, setName] = useState("");
+  // const [learning, setLearning] = useState("Reactjs");
+  const [age, setAge] = useState(20);
+
+  const handleOnChangeName = (e) => {
+    setName(e.target.value);
   };
 
-  handleOnChangeName = (event) => {
-    this.setState({
-      name: event.target.value,
-    });
-  };
-  handleOnChangeAge = (event) => {
-    this.setState({
-      age: event.target.value,
-    });
+  const handleOnChangeAge = (e) => {
+    setAge(e.target.value);
   };
 
-  handleOnSubmit = (event) => {
-    event.preventDefault();
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
     const id = Math.floor(Math.random() * 100 + 1);
-    this.props.handleAddUserInfo({
+    props.handleAddUserInfo({
       id: id + "-random",
-      name: this.state.name,
-      age: this.state.age,
+      name: name,
+      age: age,
     });
   };
-
-  render() {
-    return (
-      <>
-        <div>MyComponent</div>
-        <div>
-          My name is {this.state.name} and I'm {this.state.age}
-        </div>
-        <form onSubmit={this.handleOnSubmit}>
-          <input type='text' onChange={this.handleOnChangeName} />
-
-          <br />
-          <input type='text' onChange={this.handleOnChangeAge} />
-          <br />
-          <button>submit</button>
-        </form>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <div>MyComponent</div>
+      <div>
+        My name is {name} and I'm {age}
+      </div>
+      <form onSubmit={(e) => handleOnSubmit(e)}>
+        <input type='text' onChange={(e) => handleOnChangeName(e)} />
+        <br />
+        <input type='text' onChange={(e) => handleOnChangeAge(e)} />
+        <br />
+        <button>submit</button>
+      </form>
+    </>
+  );
+};
 
 export default AddUserInfo;
