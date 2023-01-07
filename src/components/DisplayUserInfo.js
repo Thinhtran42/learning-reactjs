@@ -2,6 +2,7 @@ import React, { Component, useState } from "react";
 
 import "./DisplayUserInfo.scss";
 import logo from "./../logo.svg";
+import { useEffect } from "react";
 
 const DisplayUserInfo = (props) => {
   const { listUsers } = props;
@@ -11,6 +12,13 @@ const DisplayUserInfo = (props) => {
   const handleClickShowHide = () => {
     setShowHide(!isShowHide);
   };
+  console.log(">>>>> call me render");
+  useEffect(() => {
+    if (listUsers.length === 0) {
+      alert("PLEASE");
+    }
+    console.log("useEffect");
+  }, []);
   return (
     <div className='Display-list-user-container'>
       <div>
